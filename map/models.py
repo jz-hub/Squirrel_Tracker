@@ -34,6 +34,8 @@ class Squirrel(models.Model):
         default='Unknown',
     )
 
+    def __str__(self):
+        return self.unique_squirrel_id
 
 
 
