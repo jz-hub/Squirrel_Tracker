@@ -145,7 +145,7 @@ class Squirrel(models.Model):
             default=False,
         )
     runs_from = models.BooleanField(
-            help_text=_('True if Squirrel was seen running from humans),
+            help_text=_('True if squirrel was seen running from humans),
             default=False,
         )
     
