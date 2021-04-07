@@ -33,7 +33,122 @@ class Squirrel(models.Model):
         choices=SHIFT_CHOICES,
         default='Unknown',
     )
+    
+    date = models.IntegerField(
+            help_text=_('Date of sighting'),
+        )
 
+    ADULT = 'Adult'
+    JUVENILE = 'Juvenile'
+    
+    AGE_CHOICES = (
+        (ADULT, 'Adult'),
+        (JUVENILE, 'Juvenile'),
+    )
+    
+    age = models.CharField(
+            help_text=_('Value is either Adult or Juvenile'),
+            max_length=20,
+            choices=AGE_CHOICES,
+        )
+
+    primary_Fur_Color = models.CharField(
+            help_text=_('Value is either gray, cinnamon or black'),
+            max_length = 10,
+            choices = COLOR_CHOICES,
+            default = 'Unknown',
+        )
+
+
+    GROUND = 'Ground plane'
+    ABOVE = 'Above ground'
+
+    LOCATION_CHOICE= (
+            (GROUND, 'Ground plane'),
+            (ABOVE, 'Above ground'),
+        )
+
+    location = models.CharField(
+            help_text=_('Location of squirrel'),
+            choices = LOCATION,
+            blank = True,
+            max_length = 20,
+        )
+
+    specific_Location = models.CharField(
+            help_text=_('Specific location of squirrel'),
+            blank = True,
+            max_length = 150,
+        )
+
+    running = models.BooleanField(
+            help_text=_('True if squirrel was seen running),
+            default=False,
+        )
+
+    chasing = models.BooleanField(
+            help_text=_('True if squirrel was seen chasing),
+            default=False,
+         )
+    climbing = models.BooleanField(
+            help_text=_('True if squrriel was seen climbing),
+            default=False,
+        )
+    eating = models.BooleanField(
+            help_text=_('True if squrriel was seen eating),
+            default=False,
+        )
+     
+    foraging = models.BooleanField(
+            help_text=_('True if squrriel was seen foraging),
+            default=False,
+        )
+     
+    other_activities = models.CharField(
+            help_text=_('Other activities'),
+            blank=True,
+            max_length = 150,
+        )
+            
+    kuks = models.BooleanField(
+            help_text=_('True if the squrriel was heard kuking),
+            default=False,
+        )
+        
+    quaas = models.BooleanField(
+            help_text=_('True if the squrriel  was heard Quaaing),
+            default=False,
+        )
+     
+    moans = models.BooleanField(
+            help_text=_('True if the squrriel was heard moaning),
+            default=False,
+        )
+            
+    tail_flags = models.BooleanField(
+            help_text=_('True if the squrriel was seen flagging its tail),
+            default=False,
+        )
+            
+    tail_twitching = models.BooleanField(
+            help_text=_('True if the squrriel was seen twitching its tail),
+            default=False,
+        )
+            
+    approaches = models.BooleanField(
+        help_text=_('True if the squrriel was seen approaching human),
+        default=False,
+        )
+            
+    indifferent = models.BooleanField(
+            help_text=_('True if squirrel was indifferent to huamn presence),
+            default=False,
+        )
+    runs_from = models.BooleanField(
+            help_text=_('True if Squirrel was seen running from humans),
+            default=False,
+        )
+    
     def __str__(self):
         return self.unique_squirrel_id
 
