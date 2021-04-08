@@ -34,9 +34,8 @@ class Squirrel(models.Model):
         default='Unknown',
     )
     
-    date = models.IntegerField(
+    date = models.DateField(
             help_text=_('Date of sighting'),
-            blank = True,
         )
 
     ADULT = 'Adult'
