@@ -8,9 +8,9 @@ class Command(BaseCommand):
 		parser.add_arguement('csv_file')
 
 	def handle(self, path, **kwargs):
-		with open(kwargs['csv_file']) as f
-		reader = csv.DicReader(f)
-		data = list(reader)
+		with open(kwargs['csv_file']) as f:
+			reader = csv.DicReader(f)
+			data = list(reader)
 
 		for i in data:
 			sq = Squirrel(
@@ -40,17 +40,3 @@ class Command(BaseCommand):
 			)
 
 			sq.save()
-
-
-
-
-
-
-
-
-
-
-
-
-
-				)
