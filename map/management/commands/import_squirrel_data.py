@@ -15,8 +15,7 @@ class Command(BaseCommand):
         with open(options['csv_file']) as f:
             reader = csv.DictReader(f)
             data = list(reader)
-
-		for i in data:
+        for i in data:
 			sq = Squirrel(
 				X = i['X'],
 				Y = i['Y'],
