@@ -17,8 +17,8 @@ class Command(BaseCommand):
             data = list(reader)
         for i in data:
             sq = Squirrel(
-                X = i['X'],
-                Y = i['Y'],
+                longitude = i['X'],
+                latitude = i['Y'],
                 shift = i['Shift'],
                 date = i['Date'],
                 unique_squirrel_id = i['Unique Squirrel ID'],
