@@ -36,6 +36,7 @@ class Squirrel(models.Model):
     
     date = models.IntegerField(
             help_text=_('Date of sighting'),
+            blank = True,
         )
 
     ADULT = 'Adult'
@@ -50,6 +51,7 @@ class Squirrel(models.Model):
             help_text=_('Value is either Adult or Juvenile'),
             max_length=20,
             choices=AGE_CHOICES,
+            blank = True,
         )
 
     BLACK = 'Black'
@@ -87,7 +89,7 @@ class Squirrel(models.Model):
             max_length = 20,
         )
 
-    specific_Location = models.CharField(
+    specific_location = models.CharField(
             help_text=_('Specific location of squirrel'),
             blank = True,
             max_length = 150,
@@ -163,9 +165,3 @@ class Squirrel(models.Model):
     
     def __str__(self):
         return self.unique_squirrel_id
-
-
-
-
-
-# Create your models here.
