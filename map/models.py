@@ -52,6 +52,18 @@ class Squirrel(models.Model):
             choices=AGE_CHOICES,
         )
 
+    BLACK = 'Black'
+    GRAY = 'Gray'
+    CINNAMON = 'Cinnamon'
+
+    COLOR_CHOICES = (
+        (BLACK, 'Black'),
+        (GRAY, 'Gray'),
+        (CINNAMON, 'Cinnamon'),
+    )
+
+
+
     primary_Fur_Color = models.CharField(
             help_text=_('Value is either gray, cinnamon or black'),
             max_length = 10,
@@ -70,7 +82,7 @@ class Squirrel(models.Model):
 
     location = models.CharField(
             help_text=_('Location of squirrel'),
-            choices = LOCATION,
+            choices = LOCATION_CHOICE,
             blank = True,
             max_length = 20,
         )
