@@ -20,7 +20,7 @@ class Command(BaseCommand):
                 longitude = i['X'],
                 latitude = i['Y'],
                 shift = i['Shift'],
-                date = i['Date'],
+                date=datetime.datetime.strptime(i['Date'].strip(), '%m%d%Y').date(),
                 unique_squirrel_id = i['Unique Squirrel ID'],
                 age = i['Age'],
                 primary_fur_color = i['Primary Fur Color'],

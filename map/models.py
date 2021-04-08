@@ -36,6 +36,8 @@ class Squirrel(models.Model):
     
     date = models.DateField(
             help_text=_('Date of sighting'),
+            null = True,
+            blank = True,
         )
 
     ADULT = 'Adult'
