@@ -6,7 +6,7 @@ from distutils.util import strtobool
 import datetime
 
 class Command(BaseCommand):
-	help = 'import data'
+    help = 'import data'
 
     def add_arguments(self, parser):
         parser.add_argument('csv_file')
@@ -21,17 +21,17 @@ class Command(BaseCommand):
                 Y = i['Y'],
                 shift = i['Shift'],
                 date = i['Date'],
-                unique_squirrel_id = i['Unique_squirrel_id'],
+                unique_squirrel_id = i['Unique Squirrel ID'],
                 age = i['Age'],
-                primary_fur_color = i['Primary_fur_color'],
-                location = i['Lacation'],
-                specific_location = i['Specific_location'],
+                primary_fur_color = i['Primary Fur Color'],
+                location = i['Location'],
+                specific_location = i['Specific Location'],
                 running = strtobool(i['Running']),
                 chasing = strtobool(i['Chasing']),
                 climbing = strtobool(i['Climbing']),
                 eating = strtobool(i['Eating']),
                 foraging = strtobool(i['Foraging']),
-                other_activities = strtobool(i['Other Activities']),
+                other_activities = i['Other Activities'],
                 kuks = strtobool(i['Kuks']),
                 quaas = strtobool(i['Quaas']),
                 moans = strtobool(i['Moans']),
