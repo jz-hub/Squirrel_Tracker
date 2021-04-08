@@ -1,16 +1,20 @@
 # import
-from django.core.management import BaseCommand
+from django.core.management import BaseCommand, CommandError
 from map.models import Squirrel
 import csv
+from distutils.util import strtobool
+import datetime
 
 class Command(BaseCommand):
-	def add_arguements(self, parser):
-		parser.add_arguement('csv_file')
+	help = 'import data'
 
-	def handle(self, path, **kwargs):
-		with open(kwargs['csv_file']) as f:
-			reader = csv.DicReader(f)
-			data = list(reader)
+    def add_arguments(self, parser):
+        parser.add_argument('csv_file')
+
+    def handle(self, *args, **options):
+        with open(options['csv_file']) as f:
+            reader = csv.DictReader(f)
+            data = list(reader)
 
 		for i in data:
 			sq = Squirrel(
