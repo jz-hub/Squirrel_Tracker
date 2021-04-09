@@ -3,10 +3,11 @@ from map.models import  Squirrel
 from django.shortcuts import redirect 
 from .forms import SquirrelForm
 from django.shortcuts import get_object_or_404
-
+from django.core.paginator import Paginator 
 
 def all(request):
     squirrels = Squirrel.objects.all()
+    
     return render(request, 'sightings/all.html',{'squirrels':squirrels})
 
 
@@ -29,7 +30,7 @@ def update(request,unique_squirrel_id):
         form = SquirrelForm(request.POST,instance = squirrel)
         if form.is_valid():
             form.save()
-            return redirect('/sightings/')
+            return redirect('/sightings/{unique_squirrel_id}')
     else:
         form = squirrelForm(instance = squirrel)
     context = {
