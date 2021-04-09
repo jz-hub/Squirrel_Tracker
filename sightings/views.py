@@ -4,6 +4,8 @@ from .forms import SquirrelForm
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator 
 from django.http import HttpResponse
+from django.db.models import Count
+
 
 def all(request):
     squirrels = Squirrel.objects.all()
@@ -29,7 +31,7 @@ def add(request):
 
 
 def update(request,unique_squirrel_id):
-    squirrel = get_object_or_404(Squirrel,pk= unique_squirrel_id)
+    squirrel = get_object_or_404(Squirrel,pk = unique_squirrel_id)
     if request.method == 'POST':
         form = SquirrelForm(request.POST,instance = squirrel)
         if form.is_valid():
@@ -54,13 +56,13 @@ def stats(request):
     color = Squirrel.objects.values('primary_fur_color').annotate(k=Count('primary_fur_color'))
     shift = Squirrel.objects.values('shift').annotate(Count('shift'))
     age= Squirrel.objects.values('age').annotate(k=Count('age'))
-    running = Squirrels.objects.filter(running='TRUE').count()
+    #running = Squirrel.objects.filter(running='TRUE').count()
     for i in Squirrel.objects.all():
-        if i.Shift == 'AM':
+        if i.shift == 'AM':
             am_count += 1
-        if i.Shift == 'PM':
+        if i.shift == 'PM':
             pm_count += 1
-        if i.Approaches == True:
+        if i.approaches == True:
             approaches_count += 1
 
     context = {
@@ -71,7 +73,7 @@ def stats(request):
         'color':color,
         'shift':shift,
         'age':age,
-        'running':running
+    #    'running':running
     }
     
     return render(request, 'sightings/stats.html',context)
