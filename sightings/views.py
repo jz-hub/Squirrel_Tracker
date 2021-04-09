@@ -56,7 +56,7 @@ def stats(request):
         if i.Shift == 'PM':
             pm_count += 1
         if i.Approaches == True:
-        approaches_count += 1
+            approaches_count += 1
 
     context = {
         'AM_Count': am_count,
