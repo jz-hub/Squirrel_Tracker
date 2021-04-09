@@ -42,13 +42,26 @@ def update(request,unique_squirrel_id):
 
 
 def stats(request):
+    am_count = 0
+    pm_count = 0
+    approaches_count = 0
     total = Squirrel.objects.count()
     color = Squirrel.objects.values('primary_fur_color').annotate(Count('primary_fur_color'))
     shift = Squirrel.objects.values('shift').annotate(Count('shift'))
     age= Squirrel.objects.values('age').annotate(Count('age'))
     running = Squirrels.objects.filter(running='TRUE').count()
+    for i in Squirrel.objects.all():
+        if i.Shift == 'AM':
+            am_count += 1
+        if i.Shift == 'PM':
+            pm_count += 1
+        if i.Approaches == True:
+        approaches_count += 1
 
     context = {
+        'AM_Count': am_count,
+        'PM_Count': pm_count,
+        'Approaches_Count': approaches_count,
         'total':total,
         'color':color,
         'shift':shift,
