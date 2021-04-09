@@ -46,9 +46,9 @@ def stats(request):
     pm_count = 0
     approaches_count = 0
     total = Squirrel.objects.count()
-    color = Squirrel.objects.values('primary_fur_color').annotate(Count('primary_fur_color'))
+    color = Squirrel.objects.values('primary_fur_color').annotate(k=Count('primary_fur_color'))
     shift = Squirrel.objects.values('shift').annotate(Count('shift'))
-    age= Squirrel.objects.values('age').annotate(Count('age'))
+    age= Squirrel.objects.values('age').annotate(k=Count('age'))
     running = Squirrels.objects.filter(running='TRUE').count()
     for i in Squirrel.objects.all():
         if i.Shift == 'AM':

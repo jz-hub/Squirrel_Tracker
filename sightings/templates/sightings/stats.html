@@ -3,9 +3,45 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    
     <title>Statistics of Sightings</title></head>
+    <a href = '/all'>Back</a>
+  </head>
 
+  <body>
+    <p>
+      <h1>Statistics of Sights</h1>
+      <br>
+      <br>
+      <h3>Total number of sightings of squirrels at central park in 2018: {{total}}</h3>
+      <br>
+      By Age:
+      <ul>
+      	{% for i in age %}
+      	<li>
+      	  {{i.age}}:{{i.k}}
+      	</li>
+      	{% endfor %}
+      </ul>
+      
+      <br>
+      By Color:
+      <ul>
+      	{% for i in color %}
+      	<li>
+      	  {{i.color}}:{{i.k}}
+      	</li>
+      </ul>
+
+      <br>
+      Other Fun Features:
+      <ul>
+      	<li>Number of Squirrels on AM: {{AM_Count}}</li>
+      	<li>Number of Squirrels on PM: {{PM_Count}}</li>
+      	<li>Number of Squirrels Approaching Human: {{Approaches_Count}}</li>
+      </ul>
+
+    </p>
+  </body>
 </html>
 
 
