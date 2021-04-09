@@ -1,14 +1,18 @@
-from django.shortcuts import render
-from map.models import  Squirrel
-from django.shortcuts import redirect 
+from django.shortcuts import render, redirect
+from map.models import Squirrel
 from .forms import SquirrelForm
 from django.shortcuts import get_object_or_404
 from django.core.paginator import Paginator 
+from django.http import HttpResponse
 
 def all(request):
     squirrels = Squirrel.objects.all()
-    
-    return render(request, 'sightings/all.html',{'squirrels':squirrels})
+    paginator = Paginator(squirrels, 40)
+    page = request.GET.get('page')
+    squirrels = paginator.get_page(page)
+    context = {'squirrels': squirrels}
+
+    return render(request, 'sightings/all.html', context)
 
 
 
