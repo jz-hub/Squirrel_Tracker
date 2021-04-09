@@ -29,18 +29,19 @@ def add(request):
 
 
 def update(request,unique_squirrel_id):
-    squirrel = get_object_or_404(Squirrel,unique_squirrel_id)
+    squirrel = get_object_or_404(Squirrel,pk= unique_squirrel_id)
     if request.method == 'POST':
         form = SquirrelForm(request.POST,instance = squirrel)
         if form.is_valid():
             form.save()
             return redirect('/sightings/{unique_squirrel_id}')
     else:
-        form = squirrelForm(instance = squirrel)
+        form = SquirrelForm(instance = squirrel)
     context = {
+       # 'unique_squirrel_id':unique_squirrel_id,
         'form': form,
-        'unique_squirrel_id':unique_squirrel_id
-    }
+        'squirrel':squirrel
+        }
     return render(request, 'sightings/update.html',context)
 
 
