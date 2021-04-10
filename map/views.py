@@ -3,9 +3,9 @@ from .models import Squirrel
 
 
 def index(request):
-    squirrels_map = Squirrel.objects.all()[:80]
+    squirrels_map = Squirrel.objects.all()[:100]
     context = {
-        'squirrels_map': squirrels_map,
+            'squirrels_map': Squirrel.objects.all()[:80],
     }
     return render(request ,'map/index.html',context)
 
