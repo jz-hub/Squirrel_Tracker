@@ -54,6 +54,9 @@ def stats(request):
     am_count = 0
     pm_count = 0
     approaches_count = 0
+    adult_count = 0
+    black_count = 0
+    kuks_count = 0
     total = Squirrel.objects.count()
     color = Squirrel.objects.values('primary_fur_color').annotate(k=Count('primary_fur_color'))
     shift = Squirrel.objects.values('shift').annotate(Count('shift'))
@@ -66,6 +69,12 @@ def stats(request):
             pm_count += 1
         if i.approaches == True:
             approaches_count += 1
+        if i.age == 'Adult':
+            adult_count += 1
+        if i.primary_fur_color == 'Black':
+            black_count += 1
+        if i.kuks == True:
+            kuks_count += 1
 
     context = {
         'AM_Count': am_count,
@@ -75,6 +84,9 @@ def stats(request):
         'color':color,
         'shift':shift,
         'age':age,
+        'Adult_Count':adult_count,
+        'Black_Count':black_count,
+        'Kuks_Count':kuks_count,
     #    'running':running
     }
     

@@ -4,7 +4,12 @@
   <head>
     <meta charset="UTF-8">
     <title>Statistics of Sightings</title></head>
-#    <a href = '/sightings'>Back</a>
+     <a class="nav-link" href="/..">Home</a>
+        <a class="nav-link" href="/sightings/add">Add</a>
+        <a class="nav-link" href="/map/">Map</a>
+        <a class="nav-link" href="/sightings/">Sightings</a>
+	<a class="nav-link" href="/sightings/stats">Statistics</a>
+
   </head>
 
   <body>
@@ -14,21 +19,16 @@
       <br>
       <h3>Total number of sightings of squirrels at central park in 2018: {{total}}</h3>
       <br>
-      By Color:
-      <ul>
-        {% for i in color %}
-        <li>
-          {{i.primary_fur_color}}:{{i.k}}
-        </li>
-        {% endfor %}
-      </ul>
       
+      
+      Some Fun Features:
       <ul>
-	<li>Total Squirrels: {{total}}}</li>
- 	Other Fun Features:
-  <li>Number of Squirrels on AM: {{AM_Count}}</li>
+        <li>Number of Squirrels on AM: {{AM_Count}}</li>
       	<li>Number of Squirrels on PM: {{PM_Count}}</li>
       	<li>Number of Squirrels Approaching Human: {{Approaches_Count}}</li>
+	<li>Number of Squirrels Kuking: {{Kuks_Count}}</li>
+	<li>Number of Black Squirrels: {{Black_Count}}</li>
+	<li>Number of Adult Squirrels: {{Adult_Count}}</li>
       </ul>
 
     </p>

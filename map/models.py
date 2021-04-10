@@ -69,7 +69,7 @@ class Squirrel(models.Model):
 
     primary_fur_color = models.CharField(
             help_text=_('Value is either gray, cinnamon or black'),
-            max_length = 10,
+            max_length = 20,
             choices = COLOR_CHOICES,
             default = 'Unknown',
         )

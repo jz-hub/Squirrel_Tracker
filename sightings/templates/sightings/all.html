@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-   <body>
+	<head>
+	<a class="nav-link" href="/..">Home</a>
+        <a class="nav-link" href="/sightings/add">Add</a>
+        <a class="nav-link" href="/map/">Map</a>
+        <a class="nav-link" href="/sightings/">Sightings</a>
+        <a class="nav-link" href="/sightings/stats">Statistics</a>
+	</head>
+
+  <body>
     <ul>
     {% for squirrel in squirrels %}
     <li><a href="{% url 'update' squirrel.unique_squirrel_id %}">{{ squirrel.unique_squirrel_id }}</a></li>
     {% endfor %}
     </ul>
 
+     <ul class="pagination">
+        {% if squirrels.has_previous %}
+        <li class="abled">
+          <a href="?page=1">
+            <span aria-hidden="true">First</span></a>
+        </li>
+        <li class="abled">
+          <a href="?page={{ squirrels.previous_page_number }}" aria-label="Previous">Previous</a></li>
+        {%else%}
+        <li class="disabled">
+          <a href="?page=1">
+            <span aria-hidden="true">First</span></a>
+        </li>
+        <li class="disabled">
+          <a href="#">Previous</a></li>
+        {% endif %}
+        <li class='active'>
+          <span>{{ squirrels.number }} of {{ squirrels.paginator.num_pages }}</span></li>
+        {% if squirrels.has_next %}
+        <li class="abled">
+          <a href="?page={{ squirrels.next_page_number }}" aria-label="Next">Next</a></li>
+        <li class="abled">
+          <a href="?page={{ squirrels.paginator.num_pages }}">
+            <span aria-hidden="true">Last</span>
+          </a>
+        </li>
+        {%else%}
+        <li class="disabled">
+          <a href="#" aria-label="Next">Next</a></li>
+        <li class="disabled">
+          <a href="?page={{ squirrels.paginator.num_pages }}">
+            <span aria-hidden="true">Last</span></a>
+        </li>
+        {% endif %}
+      </ul>
         
 
    </body>
