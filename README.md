@@ -16,5 +16,22 @@ Group Name: Group 48
 ## UNI Info
 UNIS: [wz2519, gq2146]
 
-## Link
-Link to website: 
+## Commands
+### Import Data
+```bash
+$ python3 manage.py import_squirrel_data /path/to/file.csv
+```
+### Export Data
+```bash
+$ python3 manage.py import_squirrel_data /path/to/file.csv
+```
+## Explaination of Pages
+`/map/base`: Home page of our website
+
+`/map`: Map view of sightings of 80 squirrels (Could be all 3000+ squirrels, but it would be too crowded)
+
+`/sightings/all`: All identified squirrels with their unique attribuets
+
+`/sightings/add`: To add a new squirrel if necessary
+
+`/sightings/stats`: Some fun statistics about squirrels
