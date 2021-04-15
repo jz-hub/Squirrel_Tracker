@@ -1,19 +1,25 @@
 #export
 from django.core.management import BaseCommand
+from django.http import HttpResponse
 from map.models import Squirrel
 import csv
 import sys
 
-class Command(BaseCommand):
-	
-	def add_arguements(self, parser):
-		parser.add_arguement('csv_file')
 
-	def handle(self, path, **kwargs):
-		with open(path, 'w', newline = '') as f:
-			model = Squirrel
-			field_names = [f.name for f in model._meta.fields]
-			writer = csv.writer(f, quoting = csv.QUOTE_ALL)
-			writer.writerow(field_names)
-			for j in model.objects.all():
-				writer.writerow([getattr(i, f) for f in field_names])
+class Command(BaseCommand):
+       
+    help = 'Export squirrel data'
+
+    def add_arguments(self, parser):
+        parser.add_argument('path' ,type = str)
+
+    def handle(self, *args, **options):
+        meta = Squirrel._meta
+        field_names = [i.name for i in meta.fields]
+        path = options['path']
+
+        with open('path', 'w') as f:
+            writer = csv.writer(f)
+            writer.writerow(field_names)
+            for i in Squirrel.objects.all():
+                writer.writerow([getattr(i, j) for j in field_names])
